@@ -14,8 +14,9 @@
 
 class Jit {
 public:
-    static Jit *CreateJIT(void *data, size_t datalen);
+    static Jit *CreateJIT();
     void Execute(void *ptr);
+    void *Map() { return mapStart; }
 private:
     void CreateMap();
     

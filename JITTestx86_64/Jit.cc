@@ -8,7 +8,7 @@
 #include "Jit.h"
 
 
-Jit *Jit::CreateJIT(void *data, size_t datalen) {
+Jit *Jit::CreateJIT() {
     Jit *jit = new Jit();
     
     jit->mapStart = mmap(NULL, 4096, PROT_READ | PROT_WRITE | PROT_EXEC, MAP_ANON | MAP_JIT | MAP_PRIVATE, -1, 0);
@@ -18,7 +18,7 @@ Jit *Jit::CreateJIT(void *data, size_t datalen) {
         return jit;
     }
     
-    memcpy(jit->mapStart, data, datalen);
+//    memcpy(jit->mapStart, data, datalen);
     
     return jit;
 }
